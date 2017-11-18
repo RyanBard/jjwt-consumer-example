@@ -11,7 +11,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>An example usage of JWT to show the jaxb problems with Java 9</name>
+    <name>jjwt consumer example</name>
+    <description>An example usage of JWT to show the jaxb problems with Java 9</description>
 
     <profiles>
 
