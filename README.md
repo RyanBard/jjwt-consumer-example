@@ -2,6 +2,76 @@
 
 This is an example project that is using [jjwt](https://github.com/jwtk/jjwt).  The purpose of this project is to help test usage of the jjwt jar.  Since Java 9 is deprecating jaxb in the SE jdk, special care has to be taken for libraries that expect the jaxb classes.
 
+## Testing in Docker containers
+
+You can skip the steps below if you have docker.  Simply run the test-jdk*.sh scripts to test with the specified jdk.  If you are on a Mac, you can just run the test scripts.  If on Linux, you need to run the scripts as root or with sudo (docker requires root privilege).
+
+Ex.
+
+```
+$ sudo ./test-jdk7.sh
+ryan@ryan-linux:~/projects/jjwt-consumer-example$ sudo ./test-jdk7.sh
+Sending build context to Docker daemon 213.5 kB
+Step 1/3 : FROM openjdk:7-jdk-alpine
+ ---> 6b234621ca1f
+Step 2/3 : COPY . .
+ ---> 3ab7eccbf8da
+Removing intermediate container d8e51b42e812
+Step 3/3 : CMD ./mvnw test
+ ---> Running in 17e41b5c2a8b
+ ---> 4fedb058f6e0
+Removing intermediate container 17e41b5c2a8b
+Successfully built 4fedb058f6e0
+jjwt-jdk7-r
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jjwt consumer example 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom (8.1 kB at 41 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom (9.2 kB at 287 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom (30 kB at 620 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom (15 kB at 478 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar (30 kB at 703 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.7.0/maven-compiler-plugin-3.7.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.7.0/maven-compiler-plugin-3.7.0.pom (11 kB at 357 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/30/maven-plugins-30.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/30/maven-plugins-30.pom (10 kB at 175 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/30/maven-parent-30.pom
+...
+[INFO] Surefire report directory: /target/surefire-reports
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.pom (2.4 kB at 56 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/2.12.4/surefire-providers-2.12.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/2.12.4/surefire-providers-2.12.4.pom (2.3 kB at 45 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.jar (37 kB at 820 kB/s)
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running ExampleTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.357 sec
+
+Results :
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.092 s
+[INFO] Finished at: 2018-07-06T01:51:12Z
+[INFO] Final Memory: 16M/244M
+[INFO] ------------------------------------------------------------------------
+$
+```
+
 ## Prereqs for Mac
 
 I did my testing in OS X.  You can do the testing in the following sections in any OS as long as you have multiple versions of java and manually set your JAVA_HOME before running maven.  I'm using [jenv](http://www.jenv.be/) to manage my java & JAVA_HOME in these examples.

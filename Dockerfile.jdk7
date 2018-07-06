@@ -1,0 +1,5 @@
+FROM openjdk:7-jdk-alpine
+
+COPY . .
+
+CMD ["./mvnw", "test"]
